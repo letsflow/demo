@@ -6,6 +6,16 @@ import { ProcessSummery } from "@/lib/interfaces"
 
 const API_URL = process.env.LETSFLOW_API_ADDRESS;
 
+export async function getDemoAccounts() {
+  const response = await fetch(`${API_URL}/demo-accounts`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch demo accounts', { cause: await response.text() });
+  }
+
+  return response.json();
+}
+
 export async function getScenarios(): Promise<Array<{ id: string, title: string, description: string}>> {
   const response = await fetch(`${API_URL}/scenarios`);
 

@@ -4,7 +4,7 @@ import { loadEnvConfig } from '@next/env'
 
 loadEnvConfig('./');
 
-const { ZMQ_BIND_ADDRESS } = process.env;
+const ZMQ_BIND_ADDRESS = process.env.ZMQ_BIND_ADDRESS || 'tcp://localhost:5555';
 let shouldTerminate = false;
 
 async function run() {

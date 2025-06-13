@@ -1,9 +1,7 @@
-import { Message } from '@letsflow/core/process';
-
-export async function execute(msg: Message) {
-  console.log('Received', msg.toString());
+export async function execute(msg: Record<string, any>) {
+  console.log('Received', msg);
 
   // Simulate processing time
   await new Promise(resolve => setTimeout(resolve, 1000));
-  console.log('Processed', msg.toString());
+  console.log('Processed', msg);
 }

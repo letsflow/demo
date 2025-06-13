@@ -13,20 +13,26 @@
     "@emotion/react": "^11.11.4",
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.5",
-    "@letsflow/core": "../core",
+    "@letsflow/core": "^1.0.1",
     "@mui/icons-material": "^5.15.21",
     "@mui/material": "^5.15.21",
     "@mui/material-nextjs": "^5.15.11",
-    "next": "14.2.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "@rjsf/core": "^5.24.1",
+    "@rjsf/mui": "^5.24.1",
+    "@rjsf/utils": "^5.24.1",
+    "@rjsf/validator-ajv8": "^5.24.1",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zeromq": "^6.4.2"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4",
-    "typescript": "^5"
-  }
+    "eslint": "^9.28.0",
+    "eslint-config-next": "^15.3.3",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

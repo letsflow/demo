@@ -17,7 +17,6 @@ function isActionEvent(event: ActionEvent | InstantiateEvent | TimeoutEvent): ev
 }
 
 export default function ProcessTimeline({ process }: ProcessTimelineProps) {
-
   const elements = process.events.map((event, index) => {
     const timestamp = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' })
       .format(event.timestamp);
