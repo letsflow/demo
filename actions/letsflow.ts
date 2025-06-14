@@ -2,11 +2,11 @@
 
 import { Process } from "@letsflow/core/process";
 import { Scenario } from "@letsflow/core/scenario";
-import { ProcessSummery } from "@/lib/interfaces"
+import { Account, ProcessSummery } from "@/lib/interfaces"
 
-const API_URL = process.env.LETSFLOW_API_ADDRESS;
+const API_URL = process.env.LETSFLOW_API_ADDRESS ?? 'http://localhost:3000';
 
-export async function getDemoAccounts() {
+export async function getDemoAccounts(): Promise<Account[]> {
   const response = await fetch(`${API_URL}/demo-accounts`);
 
   if (!response.ok) {

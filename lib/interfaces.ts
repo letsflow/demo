@@ -12,3 +12,13 @@ export interface ProcessSummery {
   actors: Actor[];
   scenario: ScenarioSummery;
 }
+
+export interface Account {
+  id: string;
+  info: {
+    name: string;
+    [_: string]: any;
+  };
+  roles: string[];
+  token: string;
+}

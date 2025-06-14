@@ -1,8 +1,6 @@
 import { ActionEvent, InstantiateEvent, Process, TimeoutEvent } from "@letsflow/core/process"
-import FlagIcon from '@mui/icons-material/Flag';
-import AlarmIcon from '@mui/icons-material/Alarm';
-import Avatar from '@mui/material/Avatar';
 import { actorAvatar } from "@/lib/actor-avatar"
+import { Avatar } from 'primereact/avatar';
 
 interface ProcessTimelineProps {
   process: Process;
@@ -24,7 +22,7 @@ export default function ProcessTimeline({ process }: ProcessTimelineProps) {
     if (isInstantiateEvent(event)) {
       return (
         <div key={index}>
-          <FlagIcon />
+          <i className="pi pi-flag" />
           <div className="timestamp">{ timestamp }</div>
         </div>
       );
@@ -33,7 +31,7 @@ export default function ProcessTimeline({ process }: ProcessTimelineProps) {
     if (!isActionEvent(event)) {
       return (
         <div key={index}>
-          <AlarmIcon />
+          <i className="pi pi-clock" />
           <div className="timestamp">{ timestamp }</div>
         </div>
       );

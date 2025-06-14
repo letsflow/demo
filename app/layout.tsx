@@ -1,7 +1,8 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import type { Metadata } from "next";
-import { ThemeProvider } from '@mui/material/styles';
-import theme from '@/app/theme';
+import { PrimeReactProvider } from 'primereact/api';
+
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primeicons/primeicons.css';
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,11 +22,9 @@ export default function RootLayout({
         <title>{metadata.title as string}</title>
       </head>
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <PrimeReactProvider>
+          {children}
+        </PrimeReactProvider>
       </body>
     </html>
   );

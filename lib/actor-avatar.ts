@@ -2,31 +2,35 @@ import { Actor } from "@letsflow/core/process"
 
 function stringToColor(string: string) {
   let hash = 0;
-  let i;
 
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
+  for (let i = 0; i < string.length; i++) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  let color = '#';
+  let r = (hash >> 0) & 0xff;
+  let g = (hash >> 8) & 0xff;
+  let b = (hash >> 16) & 0xff;
 
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-  /* eslint-enable no-bitwise */
+  const backgroundColor = `#${[r, g, b]
+    .map((x) => `00${x.toString(16)}`.slice(-2))
+    .join('')}`;
 
-  return color;
+  // YIQ contrast formula to decide text color
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  const fontColor = yiq >= 128 ? '#000' : '#fff';
+
+  return { backgroundColor, color: fontColor };
 }
+
 
 export function actorAvatar(actor: Actor) {
   const name = actor.name ?? actor.title;
+  const parts = name.split(' ');
 
   return {
-    sx: {
-      bgcolor: stringToColor(name),
+    style: {
+      ...stringToColor(name),
     },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+    label: `${parts[0][0]}${parts.length > 1 ? parts[1][0] : ''}`,
   };
 }
