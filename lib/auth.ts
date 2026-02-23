@@ -1,12 +1,15 @@
+'use server';
+
 import { cookies } from 'next/headers';
 
-export const COOKIE_NAME = 'auth-token';
+const COOKIE_NAME = 'auth-token';
 
-export function setAuthCookie(token: string) {
-  cookies().set(COOKIE_NAME, token, { httpOnly: true, sameSite: 'lax' });
+export async function setAuthCookie(token: string) {
+  const cookieStore = await cookies();
+  cookieStore.set(COOKIE_NAME, token, { httpOnly: true, sameSite: 'lax' });
 }
 
-export function getAuthCookie(): string | undefined {
-  return cookies().get(COOKIE_NAME)?.value;
+export async function getAuthCookie(): Promise<string | undefined> {
+  const cookieStore = await cookies();
+  return cookieStore.get(COOKIE_NAME)?.value;
 }
-

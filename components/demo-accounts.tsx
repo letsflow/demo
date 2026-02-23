@@ -1,23 +1,22 @@
 'use client';
 
+import { DataView } from 'primereact/dataview';
+import { Card } from 'primereact/card';
 import { Account } from '@/lib/interfaces';
-import { setAuthToken } from '@/actions/auth';
+import { setAuthCookie } from '@/lib/auth';
 
-interface DemoAccountsProps {
+interface Props {
   accounts: Account[];
 }
 
-export default function DemoAccounts({ accounts }: DemoAccountsProps) {
+export default function DemoAccounts({ accounts }: Props) {
+  const itemTemplate = (account: Account) => (
+    <div onClick={() => setAuthCookie(account.token)} style={{ cursor: 'pointer' }}>
+      <Card title={account.info.name} subTitle={account.roles.join(', ')} />
+    </div>
+  );
+
   return (
-    <ul>
-      {accounts.map((account) => (
-        <li key={account.id}>
-          <button type="button" onClick={() => setAuthToken(account.token)}>
-            {account.info.name}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <DataView value={accounts} itemTemplate={itemTemplate} layout="list" />
   );
 }
-

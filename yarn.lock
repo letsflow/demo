@@ -1955,6 +1955,7 @@ __metadata:
     eslint: "npm:^9.28.0"
     eslint-config-next: "npm:^15.3.3"
     next: "npm:^15.3.3"
+    primeflex: "npm:^4.0.0"
     primeicons: "npm:^7.0.0"
     primereact: "npm:^10.9.6"
     react: "npm:^19.1.0"
@@ -4501,6 +4502,13 @@ __metadata:
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
   checksum: 10/0b9d2c76801ca652a7f64892dd37b7e3fab149a37d2424920099bf894acccc62abb4424af2155ab36dea8744843060a2d8ddc983518d0b1e22265a22324b72ed
+  languageName: node
+  linkType: hard
+
+"primeflex@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "primeflex@npm:4.0.0"
+  checksum: 10/899cbc63b8eddba37c3b6cba79d8823968be2450e5e353d3ed93e772accdac6bae899289e3f5c82173a922ac2806729cf3376a40678781738f021335f4938d18
   languageName: node
   linkType: hard
 

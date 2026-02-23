@@ -7,14 +7,14 @@ import { getAuthCookie } from '@/lib/auth';
 
 const API_URL = process.env.LETSFLOW_API_ADDRESS ?? 'http://localhost:3000';
 
-function authHeaders() {
-  const token = getAuthCookie();
+async function authHeaders(): Promise<{ Authorization?: string }> {
+  const token = await getAuthCookie();
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
 export async function getDemoAccounts(): Promise<Account[]> {
   const response = await fetch(`${API_URL}/demo-accounts`, {
-    headers: authHeaders(),
+    headers: await authHeaders(),
   });
 
   if (!response.ok) {
@@ -26,7 +26,7 @@ export async function getDemoAccounts(): Promise<Account[]> {
 
 export async function getScenarios(): Promise<Array<{ id: string, title: string, description: string}>> {
   const response = await fetch(`${API_URL}/scenarios`, {
-    headers: authHeaders(),
+    headers: await authHeaders(),
   });
 
   if (!response.ok) {
@@ -38,7 +38,7 @@ export async function getScenarios(): Promise<Array<{ id: string, title: string,
 
 export async function getScenario(id: string): Promise<Scenario> {
   const response = await fetch(`${API_URL}/scenarios/${id}`, {
-    headers: authHeaders(),
+    headers: await authHeaders(),
   });
 
   if (!response.ok) {
@@ -50,7 +50,7 @@ export async function getScenario(id: string): Promise<Scenario> {
 
 export async function getProcesses(): Promise<ProcessSummery[]> {
   const response = await fetch(`${API_URL}/processes`, {
-    headers: authHeaders(),
+    headers: await authHeaders(),
   });
 
   if (!response.ok) {
@@ -62,7 +62,7 @@ export async function getProcesses(): Promise<ProcessSummery[]> {
 
 export async function getProcess(id: string): Promise<Process> {
   const response = await fetch(`${API_URL}/processes/${id}`, {
-    headers: authHeaders(),
+    headers: await authHeaders(),
   });
 
   if (!response.ok) {

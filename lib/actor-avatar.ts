@@ -22,8 +22,7 @@ function stringToColor(string: string) {
   return { backgroundColor, color: fontColor };
 }
 
-
-export function actorAvatar(actor: Actor) {
+export function actorAvatar(actor: { name?: string, title: string }) {
   const name = actor.name ?? actor.title;
   const parts = name.split(' ');
 
